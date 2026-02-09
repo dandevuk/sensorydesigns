@@ -15,6 +15,7 @@
   endif
 %}
 
+{% if section.settings.collection_list != blank %}
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
 
 <div
@@ -70,6 +71,8 @@
     test_id: 'collections-list-grid'
   %}
 </div>
+
+{% endif %}
 
 {% schema %}
 {
