@@ -72,7 +72,7 @@
   endif
 -%}
 
-<div ref="priceContainer">
+<div class="price-container" ref="priceContainer">
   {% if has_volume_pricing %}
     {% comment %} Volume pricing display {% endcomment %}
     {% if show_compare_price %}
@@ -97,16 +97,16 @@
     {% if show_compare_price %}
       <span role="group">
         <span class="visually-hidden">{{ 'content.price_sale' | t }}&nbsp;</span>
-        <span class="price">{{ price | default: '&nbsp;' }} Excl Vat {{ selected_variant.price | divided_by: 1.2 | money }}</span>
+        <span class="price">{{ price | default: '&nbsp;' }} <span class="excl-vat">(Excl VAT {{ selected_variant.price | divided_by: 1.2 | money }})</span></span>
       </span>
     {% else %}
-      <span class="price">{{ price | default: '&nbsp;' }} Excl Vat {{ selected_variant.price | divided_by: 1.2 | money }}</span>
+      <span class="price">{{ price | default: '&nbsp;' }} <span class="excl-vat">(Excl VAT {{ selected_variant.price | divided_by: 1.2 | money }})</span></span>
     {% endif %}
 
     {% if show_sale_price_first == true and show_compare_price %}
       <span role="group">
         <span class="visually-hidden">{{ 'content.price_regular' | t }}&nbsp;</span>
-        <span class="compare-at-price">{{- compare_at_price }} Excl Vat {{ selected_variant.compare_at_price | divided_by: 1.2 | money }}</span>
+        <span class="compare-at-price">{{- compare_at_price }} <span class="excl-vat">(Excl VAT {{ selected_variant.compare_at_price | divided_by: 1.2 | money }})</span></span>
       </span>
     {% endif %}
   {% endif %}
@@ -124,3 +124,12 @@
 {%- if has_volume_pricing -%}
   <small class="volume-pricing-note">{{ 'content.volume_pricing_available' | t }}</small>
 {%- endif -%}
+
+{% stylesheet %}
+.price-container .price, .price-contaienr .compare-at-price {
+  font-size: 18px;
+}
+.price-container .excl-vat {
+  font-size: 14px;
+}
+{% endstylesheet %}
