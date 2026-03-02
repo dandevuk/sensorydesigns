@@ -335,7 +335,8 @@
           "switches",
           "uv-range",
           "wall-and-floor-tiles",
-          "wind-vibration"
+          "wind-vibration",
+          "interactive-projection"
         ],
         "layout_type": "grid",
         "carousel_on_mobile": false,
